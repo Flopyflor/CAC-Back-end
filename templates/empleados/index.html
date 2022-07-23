@@ -1,0 +1,25 @@
+{% include 'header.html' %}
+<table class="table table-light">
+    <thead class="thead-light">
+        <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Foto</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for empleado in empleados %}
+        <tr>
+            <td>{{empleado[0]}}</td>
+            <td>{{empleado[1]}}</td>
+            <td>{{empleado[2]}}</td>
+            <td><img class="img-thumbnail" width="100px" src="/uploads/{{empleado[3]}}" alt=""></td>
+            <td><a class="btn btn-warning" href="/edit/{{empleado[0]}}">Editar</a> |
+     <a class="btn btn-danger" onclick="return confirm('Desea borrar el empleado?');" href="/destroy/{{empleado[0]}}">Borrar</a> </td>
+        </tr>
+        {% endfor %} <!-- Esto viene de jinja-->
+    </tbody>
+</table>
+{% include 'footer.html' %}
